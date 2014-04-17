@@ -1,5 +1,10 @@
 build/
 dist/
-.egg
+*.egg
 .egginfo/
+*.egg/
+*.egginfo/
 *.pyc
+*.sublime-project
+*.sublime-workspace
+hooroo-links.json

@@ -2,51 +2,59 @@ from rumps import *
 import urllib
 import webbrowser
 
-def e(_):
-  print 'EEEEEEE'
+def load_url(sender):
+  print sender.key
+
+def create_menu(title, callback_function, lookup_key):
+  menu_item = MenuItem(title, callback=callback_function)
+  menu_item.key = lookup_key
+  return menu_item
+
+def load_config_json(_):
+  print 'load_config_json'
 
 app = App('HoorooMenu', icon='hooroo-logo.png')
 app.menu = [
   (
     'Production',
     [
-      MenuItem('Qantas', callback=e),
-      MenuItem('Jetstar', callback=e),
-      MenuItem('Hooroo', callback=e),
-      MenuItem('Extranet', callback=e)
+      create_menu('Qantas', load_url, 'production-qantas'),
+      create_menu('Jetstar', load_url, 'production-jetstar'),
+      create_menu('Hooroo', load_url, 'production-hooroo'),
+      create_menu('Extranet', load_url, 'production-extranet')
     ]
   ),
   (
     'Staging',
     [
-      MenuItem('Qantas', callback=e),
-      MenuItem('Jetstar', callback=e),
-      MenuItem('Hooroo', callback=e),
-      MenuItem('Extranet', callback=e)
+      create_menu('Qantas', load_url, 'staging-qantas'),
+      create_menu('Jetstar', load_url, 'staging-jetstar'),
+      create_menu('Hooroo', load_url, 'staging-hooroo'),
+      create_menu('Extranet', load_url, 'staging-extranet')
     ]
   ),
   (
     'Development',
     [
-      MenuItem('Qantas', callback=e),
-      MenuItem('Jetstar', callback=e),
-      MenuItem('Hooroo', callback=e),
-      MenuItem('Extranet', callback=e)
+      create_menu('Qantas', load_url, 'dev-qantas'),
+      create_menu('Jetstar', load_url, 'dev-jetstar'),
+      create_menu('Hooroo', load_url, 'dev-hooroo'),
+      create_menu('Extranet', load_url, 'dev-extranet')
     ]
   ),
   None,
   (
     'Paperboy',
     [
-      MenuItem('Hotels', callback=e),
-      MenuItem('Places', callback=e),
-      MenuItem('Flightbooking', callback=e)
+      create_menu('Hotels', load_url, 'paperboy-hotels'),
+      create_menu('Places', load_url, 'paperboy-places'),
+      create_menu('Flightbooking', load_url, 'paperboy-fb')
     ]
   ),
   None,
-  MenuItem('Spunk', callback=e),
-  MenuItem('AWS OpsWorks', callback=e),
-  MenuItem('Nagios', callback=e),
+  create_menu('Spunk', load_url, 'splunk'),
+  create_menu('AWS OpsWorks', load_url, 'opsworks'),
+  create_menu('Nagios', load_url, 'nagios'),
   None
 ]
 
