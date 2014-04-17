@@ -8,7 +8,7 @@ Usage:
 from setuptools import setup
 
 APP = ['hooroo_menu.py']
-DATA_FILES = ['hooroo-logo.png']
+DATA_FILES = ['hooroo-logo.png', 'hooroo-links.json']
 OPTIONS = {
   'argv_emulation': True,
   'plist': {

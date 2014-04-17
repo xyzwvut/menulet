@@ -1,19 +1,24 @@
 from rumps import *
 import urllib
 import webbrowser
+import json
 
 def load_url(sender):
-  print sender.key
+  webbrowser.open(links[sender.key])
 
 def create_menu(title, callback_function, lookup_key):
   menu_item = MenuItem(title, callback=callback_function)
   menu_item.key = lookup_key
   return menu_item
 
-def load_config_json(_):
-  print 'load_config_json'
+def load_config_json():
+  json_data = open('hooroo-links.json')
+  data = json.load(json_data)
+  json_data.close()
+  return data
 
 app = App('HoorooMenu', icon='hooroo-logo.png')
+links = load_config_json()
 app.menu = [
   (
     'Production',
